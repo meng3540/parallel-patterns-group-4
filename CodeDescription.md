@@ -3,15 +3,20 @@ Code Description
 This CUDA C program calculates a 2D histogram of an image based on pixel intensity and gradient magnitude, and saves the result to a CSV file. The program uses parallel computing via CUDA to speed up the calculation, and processes the image using the Sobel operator to compute gradients.
 
 Header Files and Macros:
-cuda_runtime.h: Provides functions for memory management, kernel launches, and handling device operations in CUDA.
+cuda_runtime.h: 
+
+Provides functions for memory management, kernel launches, and handling device operations in CUDA.
 stdio.h: Standard I/O functions for file operations (e.g., writing the histogram to a CSV).
 stdlib.h: Provides memory allocation functions.
 math.h: Provides mathematical functions like sqrt for calculating gradient magnitude.
 Macros:
 
-INTENSITY_BINS (256): Number of bins for intensity values (0-255 range).
-GRADIENT_BINS (256): Number of bins for gradient magnitudes (0-255 range).
-2. Kernel: compute2DHistogram
+INTENSITY_BINS (256):
+Number of bins for intensity values (0-255 range).
+GRADIENT_BINS (256):
+Number of bins for gradient magnitudes (0-255 range).
+
+Kernel: compute2DHistogram
 This CUDA kernel is responsible for calculating the gradient magnitude and populating the 2D histogram:
 
 Inputs:
@@ -27,18 +32,22 @@ The kernel assigns a thread for each pixel in the image using its position (bloc
 The Sobel operator is applied to compute the horizontal and vertical gradients (gx, gy).
 Intensity Bin: The intensity of the pixel is directly mapped into a bin (0-255).
 
-Atomic Operation: The atomicAdd function is used to update the histogram, ensuring that multiple threads writing to the same memory location do not cause race conditions.
-3. Host Function: writeHistogramToCSV
+Atomic Operation: 
+
+The atomicAdd function is used to update the histogram, ensuring that multiple threads writing to the same memory location do not cause race conditions.
+
+Host Function: writeHistogramToCSV
 This function writes the computed 2D histogram to a CSV file:
 
 CSV Format:
 Each row in the CSV represents a non-zero entry in the histogram.
 Columns include the Intensity Bin, Gradient Bin, and Count (the frequency of pixels in that bin combination).
+
 Process:
 It loops through the histogram array, checking for non-zero values.
 Each non-zero entry is written to the CSV file in the format: Intensity Bin, Gradient Bin, Count.
 
-4. Host Function: calculate2DHistogram
+Host Function: calculate2DHistogram
 This function manages memory allocation, kernel execution, and saving the histogram:
 
 Memory Allocation:
@@ -56,7 +65,8 @@ Write Histogram:
 Passes the histogram data to the writeHistogramToCSV function to save it as a CSV file.
 Memory Cleanup:
 Frees both host and device memory after processing.
-5. Host Function: readImage
+
+Host Function: readImage
 This function reads a grayscale image:
 
 Dummy Data:
@@ -65,12 +75,17 @@ Image Dimensions:
 It assigns fixed dimensions to the image (512x512 pixels in this case).
 Real-world Replacement:
 In a real scenario, this function would read the image from a file (e.g., using libraries like stb_image for PNG/JPEG or other formats).
-6. Main Function: main
+
+
+Main Function: main
 This is the entry point of the program:
 
-Image Reading: Calls the readImage function to load the image data (or generate random values for testing).
-Histogram Calculation: The calculate2DHistogram function is called to perform the image processing and histogram computation on the GPU.
-Free Memory: After the histogram is written to the CSV file, the allocated memory (both host and device) is freed.
+Image Reading:
+Calls the readImage function to load the image data (or generate random values for testing).
+Histogram Calculation:
+The calculate2DHistogram function is called to perform the image processing and histogram computation on the GPU.
+Free Memory: 
+After the histogram is written to the CSV file, the allocated memory (both host and device) is freed.
 Key Concepts and Techniques:
 Parallel Computing with CUDA:
 
