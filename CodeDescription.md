@@ -2,7 +2,7 @@ Code Description
 
 This CUDA C program calculates a 2D histogram of an image based on pixel intensity and gradient magnitude, and saves the result to a CSV file. The program uses parallel computing via CUDA to speed up the calculation, and processes the image using the Sobel operator to compute gradients.
 
-1. Header Files and Macros:
+Header Files and Macros:
 cuda_runtime.h: Provides functions for memory management, kernel launches, and handling device operations in CUDA.
 stdio.h: Standard I/O functions for file operations (e.g., writing the histogram to a CSV).
 stdlib.h: Provides memory allocation functions.
