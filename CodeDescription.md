@@ -86,6 +86,7 @@ Histogram Binning: Both the intensity and gradient magnitudes are divided into b
 Atomic Operations:
 
 The use of atomicAdd ensures that when multiple threads try to update the same histogram bin, they do so safely without causing race conditions.
+
 CSV Output:
 
 The histogram is saved in a CSV file, making it easy to analyze and visualize the results outside the program.
