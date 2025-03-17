@@ -32,6 +32,7 @@ its parallel processing capabilities. Careful tuning of the workload size is nec
 strike the right balance between reducing overhead and maintaining parallel efficiency.
 
 Aggregation
+
 Aggregation reduces atomic operation overhead by grouping data before updating the histogram. 
 Instead of having each thread immediately write its results to the histogram, data is first 
 collected in local storage such as shared memory. Once the data is aggregated, a smaller number 
