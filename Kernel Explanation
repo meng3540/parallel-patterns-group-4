@@ -1,5 +1,8 @@
-- ![#f03c15](https://placehold.co/15x15/f03c15/f03c15.png) `#f03c15`
-CUDA Kernel Explanation
+<style>
+red { color: red }
+yellow { color: yellow }
+</style>
+<red>CUDA Kernel Explanation</red>
 
 The compute2DHistogram kernel is designed to compute a 2D histogram based on the 
 intensity and gradient magnitude of a grayscale image. This kernel is launched 
