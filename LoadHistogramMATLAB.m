@@ -1,22 +1,37 @@
-% Load the CSV file
-file_path = 'C:\Users\ferna\Desktop\Parallel Prog\histogram.csv'; % Replace with the correct path to your CSV file
-data = readtable(file_path);
+width = 647;
+height = 24;
 
-% Extract the X and Y columns (replace 'X' and 'Y' with the actual column names)
-x = data{:, 1}; % Assuming the first column contains X values
-y = data{:, 2}; % Assuming the second column contains Y values
 
-% Define the number of bins
-numBins = 256; % You can adjust the number of bins based on your data
+original_path = 'C:\Users\ruber\Downloads\download.raw';
+edge_map_path = 'C:\Users\ruber\Downloads\edge_map.raw';
 
-% Generate the 2D histogram
+fid = fopen(original_path, 'rb');
+raw_img = fread(fid, width * height, 'uint8=>uint8');
+fclose(fid);
+original_img = reshape(raw_img, [width, height])';
+
+
+fid = fopen(edge_map_path, 'rb');
+edge_data = fread(fid, width * height, 'uint8=>uint8');
+fclose(fid);
+edge_map = reshape(edge_data, [width, height])';
+
+% --- Convert original grayscale image to RGB ---
+original_rgb = repmat(original_img, [1, 1, 3]);  
+
+% --- Create red overlay for edges ---
+overlay_img = original_rgb;
+edge_mask = edge_map > 0;  % Binary mask where edges are detected
+
+% Set red channel to max where edges are found
+overlay_img(:,:,1) = uint8(double(overlay_img(:,:,1)) + 255 * double(edge_mask));
+overlay_img(:,:,2) = uint8(double(overlay_img(:,:,2)) .* ~double(edge_mask));
+overlay_img(:,:,3) = uint8(double(overlay_img(:,:,3)) .* ~double(edge_mask));
+
+% --- Display the result ---
 figure;
-histogram2(x, y, numBins, 'DisplayStyle', 'tile', 'ShowEmptyBins', 'on');
+imshow(overlay_img);
+title('Overlay of Detected Edges on Original Image (in Red)');
 
-% Customize the plot
-xlabel('X Values');
-ylabel('Y Values');
-zlabel('Frequency');
-title('2D Histogram');
-colorbar;
+
 
