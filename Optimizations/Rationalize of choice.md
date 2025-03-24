@@ -17,6 +17,7 @@ By introducing shared memory, we made it possible to load blocks (or tiles) of t
 After applying shared memory, the profiling results showed a noticeable reduction in global memory throughput and a substantial increase in shared memory utilization. Kernel execution times decreased, particularly for the Gaussian blur stage, which benefited heavily from data reuse. The improved locality of reference and reduced latency from shared memory access helped the kernel sustain higher throughput and better cache behavior.
 
 Final Reflection
+
 The decision to apply privatization and shared memory was directly influenced by profiling data. Where threads worked independently on their own pixels, privatization helped by cutting down unnecessary repeated global reads. Where threads needed access to common data (especially in stencil-based computations), shared memory provided a clear advantage by allowing tile-based reuse and significantly reducing bandwidth usage.
 
 Both techniques target the same problem — global memory inefficiency — but from different angles. Privatization is lightweight and thread-local, best for isolated data. Shared memory is powerful for collaborative access within thread blocks, ideal for structured patterns. Together, they allowed us to tailor the memory access behavior to the needs of each kernel, achieving a more efficient and scalable CUDA implementation.
