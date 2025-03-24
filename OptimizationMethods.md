@@ -47,4 +47,3 @@ frequent collisions in histogram bins.
 
 By strategically combining these methods, developers can achieve significant performance gains 
 in GPU-based 2D histogram processing, ensuring efficient resource utilization and improved throughput.
-Footer
