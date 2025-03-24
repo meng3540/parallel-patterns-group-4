@@ -1,4 +1,5 @@
 Why We Chose Privatization and Shared Memory as Optimization Techniques
+
 In GPU programming, memory access patterns are critical to performance. CUDA applications can be bottlenecked by slow global memory access. To address this, we applied two key optimization strategies: Privatization and Shared Memory. We selected these techniques based on profiling insights and hardware access characteristics.
 
 Profiling Insights Summary
