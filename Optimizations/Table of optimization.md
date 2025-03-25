@@ -81,7 +81,7 @@ Conclusion:
 
 |Metric	|Best Performer|
 |-------|-------------------------|
-|Running |Time	Only Privatization|
+|Running Time|	Only Privatization|
 |Memory Efficiency|	Optimized|
 |SM Throughput|	Optimized|
 |Occupancy	|Optimized|
