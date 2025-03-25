@@ -79,12 +79,13 @@ Despite more cycles, the optimized version balances occupancy, throughput, and m
 
 Conclusion:
 
-Metric	Best Performer
-Running Time	Only Privatization
-Memory Efficiency	Optimized
-SM Throughput	Optimized
-Occupancy	Optimized
-Least Cycles	Only Privatization
+|Metric	|Best Performer|
+|-------|-------------------------|
+|Running |Time	Only Privatization|
+|Memory Efficiency|	Optimized|
+|SM Throughput|	Optimized|
+|Occupancy	|Optimized|
+|Least Cycles|	Only Privatization|
 
 Optimized method provides the best overall performance across all metrics.
 
