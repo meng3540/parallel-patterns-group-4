@@ -1,0 +1,30 @@
+% Load the CSV file
+file_path = 'C:\Users\ruber\Downloads\histogram_output.csv'; % Replace with the correct path to your CSV file
+
+% Read the CSV file
+data = readtable(file_path);
+
+% Extract the X, Y, and Frequency columns
+x = data{:, 1}; % Assuming the first column contains X values
+y = data{:, 2}; % Assuming the second column contains Y values
+freq = data{:, 3}; % Assuming the third column contains Frequency values
+
+% Define the number of bins
+numBins = 32; % You can adjust the number of bins based on your data
+
+% Generate a 2D histogram manually using the frequency data
+xEdges = linspace(min(x), max(x), numBins + 1); % Bin edges for X
+yEdges = linspace(min(y), max(y), numBins + 1); % Bin edges for Y
+histogramMatrix = accumarray([discretize(x, xEdges), discretize(y, yEdges)], freq, [numBins, numBins], @sum, 0);
+
+% Plot the 2D histogram
+figure;
+imagesc(xEdges, yEdges, histogramMatrix);
+axis xy;
+colorbar;
+
+% Customize the plot
+xlabel('Intensity');
+ylabel('Gradient');
+title('2D Histogram (Using Frequency)');
+
