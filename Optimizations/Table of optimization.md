@@ -6,7 +6,6 @@
 Represents how much data is transferred between memory and GPU cores.
 
 Higher = more data movement, but not always efficient.
-
 No optimized: 17.07% → high, but potentially due to inefficient global memory use.
 Optimized: 6.93% → improved memory access pattern, less waste.
 Only shared: 3.04% → fewer memory accesses, but maybe not fully optimized.
