@@ -1,1 +1,3 @@
-![Captura de pantalla 2025-03-25 160502](https://github.com/user-attachments/assets/46316e10-5c31-4b42-bbbd-bfe250308660)
+
+![Captura de pantalla 2025-03-25 163442](https://github.com/user-attachments/assets/869ea003-8e66-46bd-a59d-b90b46765a6c)
+
